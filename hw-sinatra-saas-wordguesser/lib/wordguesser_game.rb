@@ -15,15 +15,15 @@ class WordGuesserGame
     
     # Testeado por -correctly -incorrectly -same letter repeatedly
     letter = letter.downcase
-    if @word.include?(letter) && !@guesses.include?(letter)
-      @guesses += letter
-      return true
-    elsif !@word.include?(letter) && !@wrong_guesses.include?(letter)
-      @wrong_guesses += letter
-      return true
-    else
+
+    if @guesses.include?(letter) || @wrong_guesses.include?(letter)
       return false
+    elsif @word.include?(letter)
+      @guesses += letter
+    else
+      @wrong_guesses += letter
     end
+    return true
   end
 
   def word_with_guesses
