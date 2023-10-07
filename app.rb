@@ -56,9 +56,9 @@ class WordGuesserApp < Sinatra::Base
   get '/show' do
     case @game.check_win_or_lose
     when :win
-      flash[:message] = "You Win!"
+      erb :win
     when :lose
-      flash[:message] = "Sorry, you lose!"
+      erb :lose
     else
       erb :show
     end
