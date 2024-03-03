@@ -2,25 +2,21 @@
   <foreignObject width="100%" height="100%">
     <div xmlns="http://www.w3.org/1999/xhtml">
       <style>
-    /* Estilo inicial del enlace */
-    a {
-        color: blue;
-        text-decoration: none;
-    }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    
+        /* Estilo cuando el cursor se sitúa sobre el enlace */
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
 
-    /* Estilo cuando el cursor se sitúa sobre el enlace */
-    a:hover {
-        color: red;
-        text-decoration: underline;
-    }
-</style>
-
-    <body>
-
-  <!-- Enlace que cambia de estilo al pasar el cursor sobre él -->
-      <a href="#">Pasa el cursor sobre este enlace</a>
-
-    </body>
+      <div class="container">
+				<a>Pasa el cursor sobre este enlace</a>
+			</div>
     </div>
   </foreignObject>
 </svg>
