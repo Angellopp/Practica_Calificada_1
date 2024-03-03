@@ -6,8 +6,6 @@
             color: blue;
             text-decoration: none;
         }
-    
-        /* Estilo cuando el cursor se sitúa sobre el enlace */
         a:hover {
             color: red;
             text-decoration: underline;
