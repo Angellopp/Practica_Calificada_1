@@ -1,57 +1,227 @@
-Wordguesser: a scaffolded (!) ESaaS getting-started assignment
-=============================================================
+<svg fill="none" viewBox="0 0 600 400" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        color: inherit;
+        text-decoration: none;
+        list-style: none;
+        outline: none;
+        box-sizing: border-box;
+      }
 
-(v1.1, September 2015.  Written by Armando Fox and Nick Herson)
-(some edits by mverdicchio 21 September 2015)
-(refinements by Armando Fox September 2017)
+      .body {
+        --color-main: #ff9b71;
+        --color-primary: #ff4444;
+        --color-secondary: #e8e677;
+        --color-background: #0d1117;
+        --color-link: #fef29e;
+        --color-link-active: #ff4444;
 
-In this assignment you'll be introduced to part of the basic cycle of creating SaaS in a disciplined way.
+        height: 400px;
+        width: 100%;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-**NOTE: Do not clone this repo to your workspace. Fork it first, then clone your fork.**
+        background-image: radial-gradient(var(--color-main), var(--color-primary), var(--color-secondary));
+        animation: border 5s linear infinite;
+        background-size: 200% 200%;
+        background-position: 0 0;
+        border: 24px solid;
+        border-color: var(--color-background);
+      }
 
+      .container {
+        background: var(--color-background);
+        height: calc(100% - 10px);
+        width: calc(100% - 10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        font-family: "Open Sans", sans-serif;
+        text-align: center;
+      }
+      h1 a {
+        display: block;
+      }
+      h1 a span {
+        overflow: hidden;
+        transition: transform 0.25s cubic-bezier(0.5, 0, 0.25, 1.25);
+        display: block;
+      }
+      h1 a span em {
+        display: block;
+      }
+      h1 a span:nth-child(1) {
+        color: var(--color-main);
+        margin-bottom: 6px;
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.3) -1s 1;
+      }
+      h1 a span:nth-child(1) em {
+        margin-top: 30px;
+        line-height: 0rem;
+        margin-bottom: -10px;
+      }
+      h1 a span:nth-child(2) {
+        color: var(--color-primary);
+        margin-bottom: 6px;
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.2) -0.9s 1;
+      }
+      h1 a span:nth-child(2) em {
+        margin-top: -6px;
+        line-height: 1rem;
+      }
+      h1 a span:nth-child(3) {
+        color: var(--color-secondary);
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.1) -0.8s 1;
+      }
+      h1 a span:nth-child(3) em {
+        margin-top: -36px;
+        line-height: 3rem;
+      }
+      h1 a:hover span,
+      h1 a:focus span {
+        transition: transform 0.125s cubic-bezier(0.5, 0, 0.25, 2.5);
+      }
+      h1 a:hover span:nth-child(1),
+      h1 a:focus span:nth-child(1) {
+        transform: translateX(1vw);
+      }
+      h1 a:hover span:nth-child(3),
+      h1 a:focus span:nth-child(3) {
+        transform: translateX(-1vw);
+      }
 
-Learning Goals
---------------
-After completing this assignment, you will be able to:
+      .items {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      ul {
+        font-size: 16px;
+        line-height: 26px;
+        color: var(--color-main);
+        font-weight: 700;
+        font-family: "Open Sans", sans-serif;
+      }
+      ul li {
+        display: flex;
+        letter-spacing: 0.125vw;
+      }
+      ul li a {
+        margin-left: 5px;
+      }
+      ul li a:hover,
+      ul li a:focus {
+        color: var(--color-link-active);
+      }
+      ul li a {
+        color: var(--color-link);
+      }
 
-* Create and deploy simple SaaS apps in your development environment, and deploy them to the public cloud
-* Practice the basic workflow of test-driven development (TDD), in which tests are written before the code (so they fail when first run) and code is then added to make them pass
-* Understand how SaaS frameworks such as Sinatra support the conceptual components of a three-tier SaaS application architecture
-* Understand the challenges of adapting a non-SaaS application to a SaaS environment, including how to identify and manage application state
-* Understand one use case of service-oriented architecture, in which your SaaS app relies on an external service's API (application programming interface) to provide part of the SaaS app's functionality.
+      .hi {
+        display: inline-block;
+        transform-origin: 70% 70%;
+        animation: hi 3s linear -2s infinite;
+      }
 
-Prerequisites
--------------
-* You should be familiar with Ruby basics, for example by completing the Ruby Intro or Ruby Calisthenics assignment.
-* You should have read [ESaaS](http://www.saasbook.info) Chapter 2, "The Architecture of SaaS Applications", and watched the accompanying videos in the [MOOC](http://www.saas-class.org).
-* You should be comfortable with basic Git usage and how to push your code to GitHub, as described in Appendix A of [ESaaS](http://www.saasbook.info).
-* You will need "survival level" Unix command-line skills and facility with an editor to edit code files.
+      @keyframes border {
+        0% { background-position: 0 0; }
+        20% { background-position: 100% 0; }
+        40% { background-position: 100% 100%; }
+        60% { background-position: 0 100%; }
+        100% { background-position: 0 0; }
+      }
 
-**NOTE: You may find the [Sinatra documentation](https://sinatrarb.com) helpful to have on hand.**
+      @keyframes hi {
+        25% { transform: rotate(0deg); }
+        30% { transform: rotate(15deg); }
+        35% { transform: rotate(0deg); }
+        40% { transform: rotate(15deg); }
+        45% { transform: rotate(0deg); }
+        80% { transform: rotate(0deg); }
+        85% { transform: rotate(15deg); }
+        90% { transform: rotate(0deg); }
+        95% { transform: rotate(15deg); }
+        100% { transform: rotate(0deg); }
+      }
 
-Introduction
-------------
-The full Agile/XP cycle we follow in ESaaS includes talking to the customer, using BDD to develop scenarios, turning those scenarios into runnable integration/acceptance tests with Cucumber, using those scenarios plus TDD to drive the creation of actual code, and deploying the result of each iteration's work to the cloud.
+      @keyframes intro {
+        0%, 75% { transform: translateX(-100vw); }
+        100% { transform: translateX(0); }
+      }
 
-In this introductory assignment, we've provided RSpec unit tests to let you use TDD to develop game logic for a word-guessing game.  In the full Agile/XP cycle, you'd develop these tests yourself as you code.
+      @keyframes fade {
+        0%, 75% { opacity: 0; }
+        100% { opacity: 1; }
+      }
 
-You'll then use the Sinatra framework to make the Wordguesser game available as SaaS. Adapting the game logic for SaaS will introduce you to thinking about RESTful routes and service-oriented architecture. As you develop the "SaaS-ified" Wordguessing game, you'll use Cucumber to describe how gameplay will work from the player's point of view and as "full stack" integration tests that will drive SaaS development.  In the full Agile/XP cycle, you'd develop Cucumber scenarios yourself based on consultation with the customer, and create the necessary *step definitions* (Cucumber code that turns plain-English scenarios into runnable tests).  In this assignment we provide both the scenarios and step definitions for you.
+      @media (prefers-color-scheme: light) {
+        .body {
+          --color-main: #9B5DE5;
+          --color-primary: #F15BB5;
+          --color-secondary: #00BBF9;
+          --color-background: #ffffff;
+          --color-link: #00BBF9;
+          --color-link-active: #F15BB5;
+        }
+      }
 
-You'll deploy your game to the cloud using Heroku, giving you experience in automating SaaS deployment.
+      @media (prefers-reduced-motion) {
+        .body {
+          animation: none;
+        }
 
-**Why Sinatra?** 
+        .hi {
+          animation: none;
+        }
 
-This assignment uses the simple [Sinatra](https://github.com/sinatra/sinatra) framework rather than Rails, so that you can focus on tools, mechanics, and SaaS concepts, all of which will readily map to Rails later.  Since our app doesn't have a database and has very few functions, Sinatra is an easy way to get started.
+        ul li {
+          opacity: 1;
+          animation: none;
+        }
 
-Contents
----------
-
-* Part 0: [Demystifying SaaS app creation](docs/part_0_create_saas_app.md)
-* Part 1: [Wordguesser](docs/part_1_wordguesser.md)
-* Part 2: [RESTful thinking for Wordguesser](docs/part_2_restful_thinking.md)
-* Part 3: [Connecting WordGuesserGame to Sinatra](docs/part_3_connecting_wordguesser_to_sinatra.md)
-* Part 4: [Introducing Cucumber](docs/part_4_cucumber.md)
-* Part 5: [Corner Cases](docs/part_5_corner_cases.md)
-* Part 6: [Conclusion](docs/part_6_conclusion.md)
-* Part 7: [Optional Challenge Assignment](docs/part_7_optional_challenge.md)
+        h1 a span:nth-child(1),
+        h1 a span:nth-child(2),
+        h1 a span:nth-child(3) {
+          animation: none;
+        }
+      }
+    </style>
+    <div class='body'>
+      <div class='container'>
+        <h1>
+          <a href="https://github.com/nikolalsvk">
+            <span><em>nikola đuza</em></span>
+            <span><em>nikola đuza</em></span>
+            <span><em>nikola đuza</em></span>
+          </a>
+        </h1>
+        <section class='items'>
+          <ul>
+            <li>Writer &#38; Software Engineer</li>
+          </ul>
+          <ul>
+            <li>at <a href="https://pragmaticpineapple.com">Pragmatic Pineapple</a></li>
+          </ul>
+          <ul>
+            <li><a href="mailto:nikolaseap@gmail.com" role="button"><span class='hi'>👋</span></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+  </foreignObject>
+</svg>
