@@ -15,9 +15,12 @@
     }
 </style>
 
-      <div class="container">
-        <a href="#">Pasa el cursor sobre este enlace</a>
-      </div>
+    <body>
+
+  <!-- Enlace que cambia de estilo al pasar el cursor sobre él -->
+      <a href="#">Pasa el cursor sobre este enlace</a>
+
+    </body>
     </div>
   </foreignObject>
 </svg>
