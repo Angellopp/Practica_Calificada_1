@@ -2,17 +2,21 @@
   <foreignObject width="100%" height="100%">
     <div xmlns="http://www.w3.org/1999/xhtml">
       <style>
-        .container {
-          display: flex;
-          width: 100%;
-          height: 300px;
-          background-color: black;
-          color: white;
-        }
-      </style>
+    /* Estilo inicial del enlace */
+    a {
+        color: blue;
+        text-decoration: none;
+    }
+
+    /* Estilo cuando el cursor se sitúa sobre el enlace */
+    a:hover {
+        color: red;
+        text-decoration: underline;
+    }
+</style>
 
       <div class="container">
-        <h1>Hi there, my name is Nikola 👋</h1>
+        <a href="#">Pasa el cursor sobre este enlace</a>
       </div>
     </div>
   </foreignObject>
